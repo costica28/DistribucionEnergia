@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "nQVZJmvXB1HONYC3eYUY1A+OlCkBYRlfwAMelrwe92ZODZyqykxX8blxjJNIYruBaT5FGgPe8v3m/chTeQERtA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\fgain\\Documents\\PruebasTecnicas\\DistribucionEnergia\\src\\Presentation\\DistribucionEnergia.Presentation.Api\\DistribucionEnergia.Presentation.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fgain\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\fgain\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\fgain\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\fgain\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\fgain\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\fgain\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
