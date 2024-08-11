@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DistribucionEnergia.Presentation.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad6775b5ad776fa09c1565d915ba697f6bf2cdae")]
 [assembly: System.Reflection.AssemblyProductAttribute("DistribucionEnergia.Presentation.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DistribucionEnergia.Presentation.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
