@@ -110,7 +110,7 @@ namespace DistribucionEnergia.Infrastructure.Persistence.Repositories
                                  tipoCliente = g.Key.TipoCliente,
                                  perdidas = g.Where(e => e.Operacion.StartsWith("Perdidas")).Sum(e => e.Costo)
                              })
-                             .OrderBy(r => r.perdidas).Take(take)
+                             .OrderByDescending(r => r.perdidas).Take(take)
                              .ToList();
             return resultado;
         }
