@@ -3,11 +3,16 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\DistribucionEnergia.Core.Application\DistribucionEnergia.Core.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\DistribucionEnergia.Infrastructure.Persistence\DistribucionEnergia.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

@@ -11,13 +11,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D2096B4D-F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{2AA10966-5C42-4437-86D2-A5A88706D3F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistribucionEnergia.Core.Application", "src\Core\DistribucionEnergia.Core.Application\DistribucionEnergia.Core.Application.csproj", "{35F87DA1-249F-4475-84B1-AFEE574AAF80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DistribucionEnergia.Core.Application", "src\Core\DistribucionEnergia.Core.Application\DistribucionEnergia.Core.Application.csproj", "{35F87DA1-249F-4475-84B1-AFEE574AAF80}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistribucionEnergia.Core.Domain", "src\Core\DistribucionEnergia.Core.Domain\DistribucionEnergia.Core.Domain.csproj", "{89627A5F-8762-49EB-AF0C-2B2369C92541}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DistribucionEnergia.Core.Domain", "src\Core\DistribucionEnergia.Core.Domain\DistribucionEnergia.Core.Domain.csproj", "{89627A5F-8762-49EB-AF0C-2B2369C92541}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistribucionEnergia.Infrastructure.Persistence", "src\Infrastructure\DistribucionEnergia.Infrastructure.Persistence\DistribucionEnergia.Infrastructure.Persistence.csproj", "{8EC719C9-072B-4526-88D1-9CED7D881050}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DistribucionEnergia.Infrastructure.Persistence", "src\Infrastructure\DistribucionEnergia.Infrastructure.Persistence\DistribucionEnergia.Infrastructure.Persistence.csproj", "{8EC719C9-072B-4526-88D1-9CED7D881050}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DistribucionEnergia.Presentation.Api", "src\Presentation\DistribucionEnergia.Presentation.Api\DistribucionEnergia.Presentation.Api.csproj", "{4B1B7186-75E5-4FA0-91C8-4EDE443347A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DistribucionEnergia.Presentation.Api", "src\Presentation\DistribucionEnergia.Presentation.Api\DistribucionEnergia.Presentation.Api.csproj", "{4B1B7186-75E5-4FA0-91C8-4EDE443347A6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ScriptBD", "ScriptBD", "{86B13A4D-E8F0-40E8-B169-750C833F60B1}"
+	ProjectSection(SolutionItems) = preProject
+		SqlQuery.sql = SqlQuery.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

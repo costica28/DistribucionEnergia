@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/src/Core/DistribucionEnergia.Core.Application/bin/Debug/net8.0
+/src/Core/DistribucionEnergia.Core.Application/obj
+/src/Core/DistribucionEnergia.Core.Domain/bin/Debug/net8.0
+/src/Core/DistribucionEnergia.Core.Domain/obj
+/src/Infrastructure/DistribucionEnergia.Infrastructure.Persistence/bin/Debug/net8.0
+/src/Infrastructure/DistribucionEnergia.Infrastructure.Persistence/obj
+/src/Presentation/DistribucionEnergia.Presentation.Api/bin/Debug/net8.0
+/src/Presentation/DistribucionEnergia.Presentation.Api/obj
