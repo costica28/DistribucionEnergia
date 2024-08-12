@@ -9,8 +9,8 @@ namespace DistribucionEnergia.Core.Application.Contracts
     public interface IEnergyInformation
     {
         Task AddRange(List<EnergyInformation> energyInformations);
-        Task<List<HistoricalConsumptionBySegmentDto>> GetHistoricalConsumptionBySegments(DateTime dateInitial, DateTime dateFinal);
-        Task<List<EnergyInformation>> GetByRangeDate(DateTime dateInitial, DateTime dateFinal);
+        Task<List<HistoricalConsumptionDto>> GetHistoricalConsumptionBySegments(DateTime dateInitial, DateTime dateFinal);
+        Task<List<HistoricalByTypeClientDto>> GetHistoricalConsumptionByTypeClient(DateTime dateInitial, DateTime dateFinal);
         Task<List<EnergyInformation>> WorstSegments(int take);
     }
 }

@@ -12,15 +12,13 @@ namespace DistribucionEnergia.Core.Application.Features.EnergyInformation
     public class HistoricalConsumptionBySegment
     {
         private IEnergyInformation _energyInformation;
-        private ISegment _segment;
 
-        public HistoricalConsumptionBySegment(IEnergyInformation energyInformation, ISegment segment)
+        public HistoricalConsumptionBySegment(IEnergyInformation energyInformation)
         {
             _energyInformation = energyInformation;
-            _segment = segment;
         }
 
-        public async Task<List<HistoricalConsumptionBySegmentDto>> GetHistoricalConsumptionBySegment(string dateInitial, string dateFinal)
+        public async Task<List<HistoricalConsumptionDto>> GetHistoricalConsumptionBySegment(string dateInitial, string dateFinal)
         {
             bool isFormatValidDateInitial = FormatDateValid.isFormatDateValid(dateInitial);
             bool isFormatValidDateFinal = FormatDateValid.isFormatDateValid(dateFinal);

@@ -22,6 +22,11 @@ namespace DistribucionEnergia.Presentation.Api.Controllers
             _sector = sector;
         }
 
+        /// <summary>
+        /// Permite guardar la información del excel en la base de datos, metodo utilizado para cargar la data
+        /// </summary>
+        /// <param name="file">Archivo xlsx que se carga</param>
+        /// <returns></returns>
         [HttpPost]
         [Route("CargarInformacion")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -42,7 +47,6 @@ namespace DistribucionEnergia.Presentation.Api.Controllers
             }
         }
 
-
         /// <summary>
         /// Permite consultar el historico de consusmos por tramos
         /// </summary>
@@ -51,18 +55,43 @@ namespace DistribucionEnergia.Presentation.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("HistoricalConsumptionBySegment/{dateInitial}/{dateFinal}")]
-        [ProducesResponseType(typeof(HistoricalConsumptionBySegmentDto), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(RespuestaExceptionDto), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(HistoricalConsumptionDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseExceptionDto), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> HistoricalConsumptionBySegment(string dateInitial, string dateFinal)
         {
             try
             {
-                var historicalConsumptionBySegment = new Core.Application.Features.EnergyInformation.HistoricalConsumptionBySegment(_energyInformation, _segment);
+                var historicalConsumptionBySegment = new Core.Application.Features.EnergyInformation.HistoricalConsumptionBySegment(_energyInformation);
                 return Ok( new { data = await historicalConsumptionBySegment.GetHistoricalConsumptionBySegment(dateInitial, dateFinal) });
             }
             catch (Exception ex)
             {
-                return BadRequest(new RespuestaExceptionDto(){ message = ex.Message.ToString() });
+                return BadRequest(new ResponseExceptionDto(){ message = ex.Message.ToString() });
+            }
+        }
+
+
+
+        /// <summary>
+        /// Permite consultar el historico de consusmos por clientes
+        /// </summary>
+        /// <param name="dateInitial">Fecha inicial</param>
+        /// <param name="dateFinal">Fecha final</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("HistoricalConsumptionByTypeClient/{dateInitial}/{dateFinal}")]
+        [ProducesResponseType(typeof(HistoricalConsumptionDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseExceptionDto), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> HistoricalConsumptionByTypeClient(string dateInitial, string dateFinal)
+        {
+            try
+            {
+                var historicalConsumptionByTypeClient = new Core.Application.Features.EnergyInformation.HistoricalConsumptionByTypeClient(_energyInformation);
+                return Ok(new { data = await historicalConsumptionByTypeClient.GetHistorical(dateInitial, dateFinal) });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseExceptionDto() { message = ex.Message.ToString() });
             }
         }
     }

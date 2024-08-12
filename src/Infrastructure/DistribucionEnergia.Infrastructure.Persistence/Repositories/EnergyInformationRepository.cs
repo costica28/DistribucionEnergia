@@ -19,12 +19,7 @@ namespace DistribucionEnergia.Infrastructure.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<List<EnergyInformation>> GetByRangeDate(DateTime dateInitial, DateTime dateFinal)
-        {
-            return await _dbContext.EnergyInformation.Where(x => DateTime.Compare(x.fecha, dateInitial) >= 0 && DateTime.Compare(x.fecha, dateFinal) <= 0).ToListAsync();
-        }
-
-        public async Task<List<HistoricalConsumptionBySegmentDto>> GetHistoricalConsumptionBySegments(DateTime dateInitial, DateTime dateFinal)
+        public async Task<List<HistoricalConsumptionDto>> GetHistoricalConsumptionBySegments(DateTime dateInitial, DateTime dateFinal)
         {
 
             var resultado = _dbContext.EnergyInformation
@@ -35,20 +30,56 @@ namespace DistribucionEnergia.Infrastructure.Persistence.Repositories
                                 (energia, tramo) => new { Energia = energia, Tramo = tramo }
                             )
                             .Where(e => DateTime.Compare(e.Energia.fecha, dateInitial) >= 0 && DateTime.Compare(e.Energia.fecha, dateFinal) <= 0)
-                            .GroupBy(e => new { e.Tramo.nombre, e.Energia.fecha })
-                            .Select(g => new HistoricalConsumptionBySegmentDto
+                            .GroupBy(e => new { e.Tramo.nombre })
+                            .Select(g => new HistoricalConsumptionDto
                             {
-                                fecha = g.Key.fecha.ToString(),
                                 tramo = g.Key.nombre,
                                 consumo = g.Where(e => e.Energia.operacion.StartsWith("Consumo")).Sum(e => e.Energia.costo),
                                 costos = g.Where(e => e.Energia.operacion.StartsWith("Costos")).Sum(e => e.Energia.costo),
                                 perdidas = g.Where(e => e.Energia.operacion.StartsWith("Perdidas")).Sum(e => e.Energia.costo)
                             })
-                            .OrderBy(r => r.fecha)
+                            .OrderBy(r => r.tramo)
                             .ToList();
             return resultado;
         }
 
+        public async Task<List<HistoricalByTypeClientDto>> GetHistoricalConsumptionByTypeClient(DateTime dateInitial, DateTime dateFinal)
+        {
+
+            var resultado = _dbContext.EnergyInformation
+                            .Join(
+                                _dbContext.Segments,
+                                energia => energia.idTramo,
+                                tramo => tramo.idTramo,
+                                (energia, tramo) => new { Energia = energia, Tramo = tramo }
+                            )
+                            .Join(
+                                _dbContext.Sectors,
+                                energia => energia.Energia.idSector,
+                                sector => sector.idSector,
+                                (energia, sector)=> new
+                                {
+                                    Fecha = energia.Energia.fecha,
+                                    Tramo = energia.Tramo.nombre,
+                                    Operacion = energia.Energia.operacion,
+                                    Costo = energia.Energia.costo,
+                                    TipoCliente = sector.nombre
+                                }
+                            )
+                            .Where(e => DateTime.Compare(e.Fecha, dateInitial) >= 0 && DateTime.Compare(e.Fecha, dateFinal) <= 0)
+                            .GroupBy(e => new { e.Tramo, e.TipoCliente })
+                            .Select(g => new HistoricalByTypeClientDto
+                            {
+                                tramo = g.Key.Tramo,
+                                tipoCliente = g.Key.TipoCliente,
+                                consumo = g.Where(e => e.Operacion.StartsWith("Consumo")).Sum(e => e.Costo),
+                                costos = g.Where(e => e.Operacion.StartsWith("Costos")).Sum(e => e.Costo),
+                                perdidas = g.Where(e => e.Operacion.StartsWith("Perdidas")).Sum(e => e.Costo)
+                            })
+                            .OrderBy(r => r.tramo)
+                            .ToList();
+            return resultado;
+        }
 
         public Task<List<EnergyInformation>> WorstSegments(int take)
         {

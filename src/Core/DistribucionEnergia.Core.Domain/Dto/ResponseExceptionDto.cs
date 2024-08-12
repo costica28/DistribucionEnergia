@@ -1,6 +1,6 @@
 ﻿namespace DistribucionEnergia.Core.Domain.Dto
 {
-    public class RespuestaExceptionDto
+    public class ResponseExceptionDto
     {
         public string message { get; set; } = string.Empty;
     }
