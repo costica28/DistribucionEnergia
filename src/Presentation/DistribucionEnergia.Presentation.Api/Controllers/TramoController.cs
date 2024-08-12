@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DistribucionEnergia.Presentation.Api.Controllers
 {
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class TramoController : ControllerBase
     {
         private IEnergyInformation _energyInformation;
