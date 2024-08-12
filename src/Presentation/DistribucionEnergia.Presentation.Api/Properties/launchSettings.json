@@ -8,18 +8,8 @@
       "sslPort": 44331
     }
   },
-  "profiles": {
-    "http": {
-      "commandName": "Project",
-      "dotnetRunMessages": true,
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "applicationUrl": "http://localhost:5157",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "https": {
+  "profiles": {    
+    "DistribucionEnergia.Presentation.Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

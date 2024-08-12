@@ -45,7 +45,6 @@ namespace DistribucionEnergia.Infrastructure.Persistence.Repositories
 
         public async Task<List<HistoricalByTypeClientDto>> GetHistoricalConsumptionByTypeClient(DateTime dateInitial, DateTime dateFinal)
         {
-
             var resultado = _dbContext.EnergyInformation
                             .Join(
                                 _dbContext.Segments,
@@ -81,9 +80,39 @@ namespace DistribucionEnergia.Infrastructure.Persistence.Repositories
             return resultado;
         }
 
-        public Task<List<EnergyInformation>> WorstSegments(int take)
+        public async Task<List<ResponseWorstCustomerSegmentsDto>> GetWorstSegments(DateTime dateInitial, DateTime dateFinal, int take)
         {
-            throw new NotImplementedException();
+            var resultado = _dbContext.EnergyInformation
+                             .Join(
+                                 _dbContext.Segments,
+                                 energia => energia.idTramo,
+                                 tramo => tramo.idTramo,
+                                 (energia, tramo) => new { Energia = energia, Tramo = tramo }
+                             )
+                             .Join(
+                                 _dbContext.Sectors,
+                                 energia => energia.Energia.idSector,
+                                 sector => sector.idSector,
+                                 (energia, sector) => new
+                                 {
+                                     Fecha = energia.Energia.fecha,
+                                     Tramo = energia.Tramo.nombre,
+                                     Operacion = energia.Energia.operacion,
+                                     Costo = energia.Energia.costo,
+                                     TipoCliente = sector.nombre
+                                 }
+                             )
+                             .Where(e => DateTime.Compare(e.Fecha, dateInitial) >= 0 && DateTime.Compare(e.Fecha, dateFinal) <= 0)
+                             .GroupBy(e => new { e.Tramo, e.TipoCliente })
+                             .Select(g => new ResponseWorstCustomerSegmentsDto
+                             {
+                                 tramo = g.Key.Tramo,
+                                 tipoCliente = g.Key.TipoCliente,
+                                 perdidas = g.Where(e => e.Operacion.StartsWith("Perdidas")).Sum(e => e.Costo)
+                             })
+                             .OrderBy(r => r.perdidas).Take(take)
+                             .ToList();
+            return resultado;
         }
 
         public async Task AddRange(List<EnergyInformation> energyInformations)

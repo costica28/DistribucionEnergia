@@ -62,15 +62,13 @@ namespace DistribucionEnergia.Presentation.Api.Controllers
             try
             {
                 var historicalConsumptionBySegment = new Core.Application.Features.EnergyInformation.HistoricalConsumptionBySegment(_energyInformation);
-                return Ok( new { data = await historicalConsumptionBySegment.GetHistoricalConsumptionBySegment(dateInitial, dateFinal) });
+                return Ok(new { data = await historicalConsumptionBySegment.GetHistoricalConsumptionBySegment(dateInitial, dateFinal) });
             }
             catch (Exception ex)
             {
-                return BadRequest(new ResponseExceptionDto(){ message = ex.Message.ToString() });
+                return BadRequest(new ResponseExceptionDto() { message = ex.Message.ToString() });
             }
         }
-
-
 
         /// <summary>
         /// Permite consultar el historico de consusmos por clientes
@@ -80,7 +78,7 @@ namespace DistribucionEnergia.Presentation.Api.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("HistoricalConsumptionByTypeClient/{dateInitial}/{dateFinal}")]
-        [ProducesResponseType(typeof(HistoricalConsumptionDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseHistoricalByTypeClienteDto), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ResponseExceptionDto), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> HistoricalConsumptionByTypeClient(string dateInitial, string dateFinal)
         {
@@ -88,6 +86,29 @@ namespace DistribucionEnergia.Presentation.Api.Controllers
             {
                 var historicalConsumptionByTypeClient = new Core.Application.Features.EnergyInformation.HistoricalConsumptionByTypeClient(_energyInformation);
                 return Ok(new { data = await historicalConsumptionByTypeClient.GetHistorical(dateInitial, dateFinal) });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseExceptionDto() { message = ex.Message.ToString() });
+            }
+        }
+
+        /// <summary>
+        /// Permite consultar los peores 20 tramos/clientes que generan perdidas
+        /// </summary>
+        /// <param name="dateInitial">Fecha inicial</param>
+        /// <param name="dateFinal">Fecha final</param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("WorstTop20CustomerSegments/{dateInitial}/{dateFinal}")]
+        [ProducesResponseType(typeof(ResponseWorstCustomerSegmentsDto), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ResponseExceptionDto), StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> WorstCustomerSegmentss(string dateInitial, string dateFinal)
+        {
+            try
+            {
+                var worstCustomerSegments = new Core.Application.Features.EnergyInformation.WorstCustomerSegments(_energyInformation);
+                return Ok(new { data = await worstCustomerSegments.GetTop20WorstCustomerSegments(dateInitial, dateFinal) });
             }
             catch (Exception ex)
             {
