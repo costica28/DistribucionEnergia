@@ -11,3 +11,5 @@
 /src/Infrastructure/DistribucionEnergia.Infrastructure.Persistence/obj
 /src/Presentation/DistribucionEnergia.Presentation.Api/bin/Debug/net8.0
 /src/Presentation/DistribucionEnergia.Presentation.Api/obj
+/src/Commons/DistribucionEnergia.Commons/bin/Debug/net8.0
+/src/Commons/DistribucionEnergia.Commons/obj

@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Commons\DistribucionEnergia.Commons\DistribucionEnergia.Commons.csproj" />
     <ProjectReference Include="..\DistribucionEnergia.Core.Domain\DistribucionEnergia.Core.Domain.csproj" />
   </ItemGroup>
 

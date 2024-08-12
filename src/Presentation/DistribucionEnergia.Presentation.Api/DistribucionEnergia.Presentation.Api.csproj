@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>disable</ImplicitUsings>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\DistribucionEnergia.Core.Application\DistribucionEnergia.Core.Application.csproj" />
+    <ProjectReference Include="..\..\Core\DistribucionEnergia.Core.Domain\DistribucionEnergia.Core.Domain.csproj" />
     <ProjectReference Include="..\..\Infrastructure\DistribucionEnergia.Infrastructure.Persistence\DistribucionEnergia.Infrastructure.Persistence.csproj" />
   </ItemGroup>
 

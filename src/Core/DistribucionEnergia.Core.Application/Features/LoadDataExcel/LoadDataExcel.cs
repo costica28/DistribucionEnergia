@@ -66,14 +66,14 @@ namespace DistribucionEnergia.Core.Application.Features.LoadDataExcel
                 for (int i = 0; i < workbook.NumberOfSheets; i++)
                 {
                     ISheet sheet = workbook.GetSheetAt(i);
-                    List<EnergyInformation> energyInformations = new List<EnergyInformation>();
+                    List<Domain.Models.EnergyInformation> energyInformations = new List<Domain.Models.EnergyInformation>();
                     // Leer filas y celdas de la hoja
                     for (int rowIndex = 1; rowIndex <= sheet.LastRowNum; rowIndex++)
                     {
                         IRow row = sheet.GetRow(rowIndex);
                         if (row != null)
                         {
-                            EnergyInformation energyInformation = new EnergyInformation(); 
+                            Domain.Models.EnergyInformation energyInformation = new Domain.Models.EnergyInformation(); 
 
                             for (int cellIndex = 0; cellIndex < row.LastCellNum; cellIndex++)
                             {
@@ -127,7 +127,7 @@ namespace DistribucionEnergia.Core.Application.Features.LoadDataExcel
                                         }
                                         else
                                             energyInformations.Add(energyInformation);
-                                        energyInformation = new EnergyInformation();
+                                        energyInformation = new Domain.Models.EnergyInformation();
                                     }
                                 }
                             }

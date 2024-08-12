@@ -1296,10 +1296,21 @@
           }
         }
       },
+      "DistribucionEnergia.Commons/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/DistribucionEnergia.Commons.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DistribucionEnergia.Commons.dll": {}
+        }
+      },
       "DistribucionEnergia.Core.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
+          "DistribucionEnergia.Commons": "1.0.0",
           "DistribucionEnergia.Core.Domain": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "NPOI": "2.7.1"
@@ -3498,6 +3509,11 @@
         "system.windows.extensions.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "DistribucionEnergia.Commons/1.0.0": {
+      "type": "project",
+      "path": "../../Commons/DistribucionEnergia.Commons/DistribucionEnergia.Commons.csproj",
+      "msbuildProject": "../../Commons/DistribucionEnergia.Commons/DistribucionEnergia.Commons.csproj"
     },
     "DistribucionEnergia.Core.Application/1.0.0": {
       "type": "project",

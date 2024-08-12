@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "WnRCrRCh9avLsue6WOOjBaJ0+/19j6ORm9HMLxkhLYzUAj5yJG8kll9Oo1pP/pNZUpoFSs/AIFLKHNc7HKl7pA==",
+  "dgSpecHash": "b6GgDuJ4UurvUa9f5FvnWBdeSr04YmVLVWYq6r0K1hU4jk3klHfHHC8W1HagQb96Kp0zok/+s8K90dFNowZamA==",
   "success": true,
   "projectFilePath": "C:\\Users\\fgain\\Documents\\PruebasTecnicas\\DistribucionEnergia\\src\\Infrastructure\\DistribucionEnergia.Infrastructure.Persistence\\DistribucionEnergia.Infrastructure.Persistence.csproj",
   "expectedPackageFiles": [
